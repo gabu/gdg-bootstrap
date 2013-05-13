@@ -1,13 +1,13 @@
 var Config = (function(){
     var config = {
         //modify these
-        'name'          : _CHAPTER_NAME_,
-        'id'            : _CHAPTER_ID_,
-        'google_api'    : _API_KEY_,
-        'pwa_id'        : _PICASA_ALBUM_ID, //picasa web album id
+        'name'          : 'GDG Nagoya',
+        'id'            : '109355660646855759577',
+        'google_api'    : 'AIzaSyAOLuF7uaLqA5TNHE2eG_QKCmOCgwu7lqA',
+        'pwa_id'        : '', //picasa web album id
         //custom stuff
         'cover_photo'   : true, //best results make sure you have 940x180 image
-        'cover_color'   : '#ffffff',
+        'cover_color'   : '#000',
         'custom_albums' : {
                             events : {
                                 //'ahNzfmdvb2dsZS1kZXZlbG9wZXJzcg4LEgVFdmVudBib8PsDDA':'5738801490307387457'
@@ -61,13 +61,10 @@ $.getJSON('https://www.googleapis.com/plus/v1/people/'+Config.get('id')+'?fields
     
     //cover photo
     if(data.cover.coverPhoto.url && Config.get('cover_photo')){
-        $('#home').css({
-            'background':'url('+data.cover.coverPhoto.url+') '+data.cover.coverInfo.leftImageOffset+'px '+(data.cover.coverInfo.topImageOffset)+'px',
-            'color' : Config.get('cover_color')
+        $('#cover_photo').attr({
+            'src': data.cover.coverPhoto.url
         });
-        
     }
-    
 })
 
 //tie photo album to event
